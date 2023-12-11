@@ -14,7 +14,8 @@ const NavBar = () => {
  const isOpen = (e) => {
   setModal(true)
  }
- const isCLose = (e) => {
+ const isClose = (e) => {
+  console.log("closedd")
   setModal(false)
  }
   console.log(auth.isSignIn)
@@ -27,18 +28,15 @@ const NavBar = () => {
             <h1>DailyInsight</h1>
           </div>
           <div className="right">
-         
             <Link to="/">Home</Link>
             <Link to="/Health">Health</Link>
             <Link to="/Technology">Technology</Link>
             <Link to="/Business">Business</Link>
             <Link to="/Sports">Sports</Link>
             <Link to="/readingList">Bookmark</Link>
-           
-          
             {auth.isSignIn ? <Logout/> :<button onClick={isOpen}>Login</button> }
-            {modal && <MainSignIn/>}
-            {auth.isSignIn == true && modal && <MainSignIn/>  }
+            {modal && <MainSignIn close={isClose}/>}
+            {auth.isSignIn == true && modal && <MainSignIn />  }
           </div>
         </nav>
       </header>

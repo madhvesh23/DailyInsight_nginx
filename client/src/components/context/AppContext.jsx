@@ -23,6 +23,7 @@ function AppContextProvider( props ) {
     const newNews = data;
     const newnew = [...readingList , newNews]
     setreadingList(newnew);
+   
 
   };
 

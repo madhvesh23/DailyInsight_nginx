@@ -20,15 +20,15 @@ exports.postArticle = async (req, res) => {
       )
       console.log(booked);
       if (!booked) {
-      const finalBooked =  await verify.findOneAndUpdate(
+        const finalBooked = await verify.findOneAndUpdate(
           { username: verified.username },
           { $push: { bookmark: [authData] } }
         )
-        return finalBooked
+        res.status(200).send(finalBooked);
       } else {
-        console.log("already exist")
+        return res.status(400).json({ error: 'Bad request', message: 'data already exist' });
       }
-      res.send(finalBooked);
+
     } else {
       return res.status(404).json("unauthorized");
     }
@@ -45,8 +45,10 @@ exports.getArticle = async (req, res) => {
     if (verified) {
       await verify
         .findOne({ username: verified.username })
-        .then((result) =>{ console.log(result.bookmark)
-           res.status(200).send(result.bookmark)});
+        .then((result) => {
+          console.log(result.bookmark)
+          res.status(200).send(result.bookmark)
+        });
 
     }
   } catch (error) {

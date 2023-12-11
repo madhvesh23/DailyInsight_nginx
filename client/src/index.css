@@ -1,28 +1,25 @@
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
+  overflow-x: hidden;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-  background-color: #f0f5f9; /* Pale blue background color */
-  background-color:#001f3f;
+  background-color: #001f3f;
 }
 
 nav .logo {
-  /* background-color: #2c3e50; Dark blue header color */
   color: #fff;
   padding: 5px;
   cursor: pointer;
-  /* text-align: center; */
 }
 
 nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #2c3e5045; /* Darker blue navigation bar color */
+  background-color: #2c3e5045;
   color: #fff;
-  padding: 10px;
+  padding: 5px;
   text-align: center;
   box-shadow: 0px 0px 7px #ffffffab;
 }
@@ -30,23 +27,23 @@ nav .right {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 nav a {
   color: #fff4f4c9;
   text-decoration: none;
   font-size: 20px;
   /* background-color: #2c3e50; */
-  padding: 4px;
+  padding: 5px;
   cursor: pointer;
   margin: 0 10px;
 }
-/* nav .right :hover{
-  color: white;
-  font-size: 21px;
-  transition: 0.2s;
-
-} */
+nav a:hover {
+  transition: all 3ms;
+  scale: 1.08;
+  background-color: #2c3e50b6;
+  border-radius: 20px;
+}
 
 .news-section {
   display: grid;
@@ -54,52 +51,20 @@ nav a {
   gap: 20px;
   padding: 20px;
   position: relative;
-  /* z-index: -1; */
-}
-
-.news-card {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  position: relative;
-}
-
-.news-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.news-card-content {
-  padding: 20px;
-  margin: 33px 0;
-}
-
-.news-card h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: #2c3e50; /* Dark blue for news titles */
-}
-
-.news-card p {
-  color: #555; /* Dark gray for news descriptions */
-  margin: 36px 0px;
 }
 
 footer {
-  background-color: #2c3e5045; /* Darker blue footer color */
+  background-color: #2c3e5045;
   color: #fff;
   text-align: center;
   padding: 10px;
   width: 100%;
 }
 .login-container {
-  max-width:390px;
+  max-width: 390px;
   border: 18px solid #e5e7eb;
   height: 50%;
   width: 100%;
-  margin: 216px auto;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -117,18 +82,9 @@ footer {
 .login-form {
   margin-top: 20px;
 }
-.login-form div {
-  margin: 11px 6px;
-}
-
-.login-form label {
-  display: block;
-  margin-bottom: 5px;
-  color: #555; /* Dark gray for form labels */
-}
 
 .login-form input {
-  width: 93%;
+  width: 90%;
   padding: 15px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
@@ -139,46 +95,46 @@ footer {
   background-color: #2c3e50; /* Dark blue for login button */
   color: #fff;
   padding: 10px 20px;
-  border: none;
-  /* border-radius: 4px; */
   cursor: pointer;
-  width: 100%;
 }
-.switch{
+.switch {
   display: flex;
   margin: 2px 1px;
-   
 }
-.line{
+.line {
   width: 1.5px;
 }
-.submitbtn{
+.submitbtn {
   margin: 2px 1px;
 }
 
-::placeholder {
+input::placeholder {
   color: rgba(0, 0, 0, 0.425);
   font-size: 16px;
-  opacity: 1; /* Firefox */
+  opacity: 1;
 }
 
-button , .right button {
+button {
   background-color: #2c3e50; /* Dark blue for login button */
   color: #fff;
   padding: 10px 20px;
   border: none;
-
   cursor: pointer;
   width: 100%;
 }
-.modal-overlay .closebtn{
+.modal-overlay .closebtn {
   position: relative;
-  top: -182px;
-  right: 74px;
-  max-width: 2%;
-
+  background-color: transparent;
+  font-size: 20px;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 4%;
+  top: -140px;
+  right:50px;
 }
-.read-more{
+.read-more {
   text-align: center;
   display: block;
 }
@@ -189,45 +145,19 @@ button , .right button {
   position: absolute;
   bottom: 10px;
 }
-.middle{
+.middle {
   color: #2c3e50;
   text-align: center;
   font-size: 40px;
   font-weight: bolder;
 }
 
-/* responsive */
-@media (max-width:768px) {
-  nav {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-  }
-  nav .icon {
-    display: block;
-  }
-
-  .right {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-  }
-  .logo {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-  }
-}
-
-
-
+ 
 /* new css */
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,600,700);
 @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
 figure.snip1216 {
-  font-family: 'Raleway', Arial, sans-serif;
+  font-family: "Raleway", Arial, sans-serif;
   color: #fff;
   position: relative;
   overflow: hidden;
@@ -241,7 +171,6 @@ figure.snip1216 {
   text-align: left;
   font-size: 16px;
   box-shadow: 0px 0px 4px 0px #ffffff1f;
-  
 }
 figure.snip1216 * {
   -webkit-box-sizing: border-box;
@@ -304,7 +233,7 @@ figure.snip1216 p {
 figure.snip1216 footer {
   padding: 5px 0px;
   border-top: 0.2px solid white;
-  background-color:#001f3f;
+  background-color: #001f3f;
   color: #e6e6e6;
   font-size: 16px;
   font-weight: 600;
@@ -313,8 +242,8 @@ figure.snip1216 footer {
   position: absolute;
   bottom: 0px;
 }
-.read-more:hover{
-  color: white!important;
+.read-more:hover {
+  color: white !important;
 }
 figure.snip1216 footer > div {
   display: inline-block;
@@ -339,18 +268,8 @@ figure.snip1216.hover img {
 }
 
 /* modal */
-.banner{
-  font-size: 17px;
-  /* border: 1px solid #00000085; */
-  border-bottom: 1px solid black;
-  border-top: 1px solid black;
-  margin: 18px 15px -6px 15px;
-  border-radius: 10px;
-  color: #ff0000fa;
-  font-weight: 800;
-}
+
 .modal-overlay {
-  display: flex;
   position: fixed;
   top: 0;
   left: 0;
@@ -359,21 +278,23 @@ figure.snip1216.hover img {
   background-color: rgba(0, 0, 0, 0.344);
   justify-content: center;
   align-items: center;
-  /* color: rgb(223, 0, 0); */
   color: black;
-  z-index:5;
-}
-
-.modal-content {
-  background-color: white;
-  width: 80%;
-  max-width: 800px;
   display: flex;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
 }
-
+.modal-content {
+  max-width: 850px;
+  width: 85%;
+  background-color: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+}
 .modal-image {
-  flex: 1;
+  display: flex;
+  align-items: stretch;
+  flex-direction: row;
   max-width: 50%;
   padding: 20px;
 }
@@ -388,4 +309,55 @@ figure.snip1216.hover img {
   max-width: 50%;
   padding: 20px;
   overflow: auto;
-} 
+}
+@media (max-width: 768px) {
+  nav {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  nav .icon {
+    display: block;
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+  .logo {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+  .modal-content {
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+  }
+  .modal-news {
+    max-width: 100% !important;
+    padding-top: 0px !important;
+  }
+  .modal-image {
+    max-width: 100% !important;
+  }
+  .closebtn{
+    top: -250px !important;
+    right: 30px!important;
+  }
+}
+.close_login{
+  text-align: end;
+  height: 0px;
+  position: relative;
+  top: -22px;
+  font-size: 26px;
+  font-weight: 900;
+  right: -14px;
+  cursor: pointer;
+}
