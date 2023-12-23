@@ -189,6 +189,15 @@ nav {
   padding: 5px;
   text-align: center;
   box-shadow: 0px 0px 7px #ffffffab;
+  width: 100%;
+}
+nav .logo{
+  margin: 10px 0px;
+}
+
+nav .logo img{
+  width: 200px;
+  height: 50px 
 }
 nav .right {
   display: flex;
@@ -206,11 +215,16 @@ nav a {
   margin: 0 10px;
 }
 nav a:hover {
-  transition: all 3ms;
+  transition: all 3ms ease-in-out;
   scale: 1.08;
   background-color: #2c3e50b6;
   border-radius: 20px;
 }
+
+nav .coll{
+  display: none;
+}
+
 
 .news-section {
   display: grid;
@@ -219,6 +233,22 @@ nav a:hover {
   padding: 20px;
   position: relative;
 }
+
+.news-card{
+  background-color: #2c3e50;
+    color: white;
+    border-radius: 8px;
+    height: fit-content;
+}
+.news-card img{
+  border-radius: 8px;
+  width: 100%;
+}
+.news-card-content{
+  padding: 0px 10px;
+}
+
+
 
 footer {
   background-color: #2c3e5045;
@@ -681,11 +711,15 @@ figure.snip1216.hover img {
   padding: 20px;
   overflow: auto;
 }
-@media (max-width: 768px) {
+@media (max-width: 930px) {
   nav {
     display: flex;
-    justify-content: center;
-    flex-direction: column;
+    justify-content: space-around;
+    flex-direction: row;
+  }
+
+  nav .logo{
+    width: 40%;
   }
   nav .icon {
     display: block;
@@ -696,6 +730,14 @@ figure.snip1216.hover img {
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
+  }
+
+  nav .right{
+    display: none;
+  }
+
+  nav .coll{
+    display: block!important;
   }
   .logo {
     display: flex;
@@ -721,7 +763,30 @@ figure.snip1216.hover img {
     top: -250px !important;
     right: 30px!important;
   }
+  .news-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    position: relative;
+    justify-items: center;
+  }
 }
+
+
+@media (max-width: 520px) {
+  .modal-news h2{
+    font-size: 16px;
+  }
+  .modal-news p{
+    font-size: 14px;
+    text-align: justify;
+  }
+  .news-section {
+    justify-content: center;
+  }
+}
+
 .close_login{
   text-align: end;
   height: 0px;

@@ -5,6 +5,8 @@ import Login from './auth/Login';
 import { useContext } from "react";
 import AuthContext from "../components/context/AuthContext";
 import MainSignIn from './auth/MainSignIn';
+import logo from '../static/logo.png'
+import { FiAlignJustify } from "react-icons/fi";
 
 
 
@@ -28,7 +30,7 @@ const NavBar = () => {
       <header>
         <nav>
           <div className="logo">
-            <h1>DailyInsight</h1>
+            <img src={logo} alt="" />
           </div>
           <div className="right">
             <Link to="/">Home</Link>
@@ -46,6 +48,7 @@ const NavBar = () => {
             {auth.isSignIn == true && modal && <MainSignIn />  }
 >>>>>>> 4702f325f7e13f10e0bbd9f640322ae0693cf2a1
           </div>
+          <div><button className='coll'><FiAlignJustify /></button></div>
         </nav>
       </header>
     </div>

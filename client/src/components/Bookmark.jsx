@@ -89,6 +89,7 @@ const Bookmark = () => {
                 <div className="news-card-content">
                   <h3>{data.title}</h3>
                   <p>{data.description}</p>
+                  
                 </div>
               </div>
             );

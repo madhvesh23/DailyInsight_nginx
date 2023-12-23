@@ -3,7 +3,7 @@ const Footer = () => {
   return (
     <>
       <footer>
-        <p>&copy; 2023 DailyInsight. All rights reserved.</p>
+        <p>&copy; Copyright 2022-2023 DailyInsight. All rights reserved.</p>
       </footer>
     </>
   );
