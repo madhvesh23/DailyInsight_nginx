@@ -27,7 +27,7 @@ app.use(function(req, res, next) {
 //news
 app.use(
   cors({
-    origin: "*",
+    origin: ["http://localhost:3000"],
     credentials: true,
   })
 );

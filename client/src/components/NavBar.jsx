@@ -17,10 +17,7 @@ const NavBar = () => {
   setModal(true)
  }
  const isClose = (e) => {
-<<<<<<< HEAD
-=======
   console.log("closedd")
->>>>>>> 4702f325f7e13f10e0bbd9f640322ae0693cf2a1
   setModal(false)
  }
   console.log(auth.isSignIn)
@@ -40,13 +37,8 @@ const NavBar = () => {
             <Link to="/Sports">Sports</Link>
             <Link to="/readingList">Bookmark</Link>
             {auth.isSignIn ? <Logout/> :<button onClick={isOpen}>Login</button> }
-<<<<<<< HEAD
-             {modal && <MainSignIn close={isClose}/>}
-            {auth.isSignIn == true && modal && <MainSignIn/>  }
-=======
             {modal && <MainSignIn close={isClose}/>}
             {auth.isSignIn == true && modal && <MainSignIn />  }
->>>>>>> 4702f325f7e13f10e0bbd9f640322ae0693cf2a1
           </div>
           <div><button className='coll'><FiAlignJustify /></button></div>
         </nav>

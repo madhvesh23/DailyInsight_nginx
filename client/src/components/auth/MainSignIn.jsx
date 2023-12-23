@@ -5,10 +5,6 @@ import { useNavigate } from "react-router-dom";
 import api from "../Api";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-<<<<<<< HEAD
-
-=======
->>>>>>> 4702f325f7e13f10e0bbd9f640322ae0693cf2a1
 export default function MainSignIn({close}) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -50,12 +46,8 @@ export default function MainSignIn({close}) {
             console.log(auth.isSignIn)
             navigate('/home')
             window.location.reload()
-<<<<<<< HEAD
-	     toast("Welcome to DailyInsight!");
-=======
             toast("Welcome to DailyInsight!");
 
->>>>>>> 4702f325f7e13f10e0bbd9f640322ae0693cf2a1
         } else {
             alert("Please enter a valid username and password.");
         }
@@ -63,10 +55,6 @@ export default function MainSignIn({close}) {
 
     return (
         <div className="modal-overlay">
-<<<<<<< HEAD
-          <div onClick={()=>close()} className="close_login">X</div>
-=======
->>>>>>> 4702f325f7e13f10e0bbd9f640322ae0693cf2a1
             <div className="login-container">
                 <div onClick={()=>close()} className="close_login">X</div>
                 <h2>Welcome to DailyInsight</h2>
@@ -92,20 +80,6 @@ export default function MainSignIn({close}) {
                     </div> */}
                 </form>
             </div>
-<<<<<<< HEAD
- <ToastContainer
-	                    position="top-center"
-	                    autoClose={5000}
-	                    hideProgressBar={false}
-	                    newestOnTop={false}
-	                    closeOnClick
-	                    rtl={false}
-	                    pauseOnFocusLoss
-	                    draggable
-	                    pauseOnHover
-	                    theme="dark"
-	                />
-=======
             <ToastContainer
                 position="top-center"
                 autoClose={5000}
@@ -118,7 +92,6 @@ export default function MainSignIn({close}) {
                 pauseOnHover
                 theme="dark"
             />
->>>>>>> 4702f325f7e13f10e0bbd9f640322ae0693cf2a1
         </div>
     )
 }
