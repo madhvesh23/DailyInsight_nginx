@@ -6,7 +6,7 @@ const  News = ({key , news , onButtonClick}) => {
     <div>
           <figure  className="snip1216">
             <div className="image">
-              <img src={news.urlToImage} alt="sample58" />
+              <img src={news.image} alt="sample58" />
             </div>
             <figcaption>
               <div className="date">

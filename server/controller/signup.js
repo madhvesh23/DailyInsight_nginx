@@ -26,9 +26,7 @@ exports.createUser = async (req, res) => {
           res
             .status(200)
             .cookie("token", token, {
-              httpOnly : true,
-              sameSite: 'None',
-              secure: true
+              httpOnly : true
             })
             .send();
 
@@ -66,9 +64,7 @@ exports.loginUser = async (req, res) => {
         return res
           .status(200)
           .cookie("token", token, {
-            httpOnly : true,
-              sameSite: 'None',
-              secure: true
+            httpOnly : true
           })
           .send({ token: token });
         // return res.status(200).send({ token: token });

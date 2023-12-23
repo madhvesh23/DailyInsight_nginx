@@ -18,7 +18,7 @@ function ReadingList() {
           {readingList.length <= 0 ? (<div className="middle">"NO ITEMS...Add any Articles!"</div>) : (readingList.map((data, key) => {
             return (
               <div key={key} className="news-card">
-                <img src={data.urlToImage} alt="News 1" />
+                <img src={data.image} alt="News 1" />
                 <div clasName="news-card-content">
                   <h3>{data.title}</h3>
                   <p>{data.description}</p>

@@ -18,9 +18,16 @@ const MONGO_URL = process.env.MONGO_URL;
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.header("Access-Control-Allow-Headers", "x-access-token, Origin, X-Requested-With, Content-Type, Accept");
+  next();
+})
+//news
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: "*",
     credentials: true,
   })
 );
@@ -28,19 +35,19 @@ app.use(
 app.use("/auth", routes);
 app.use("/articles", bookmarkRoute);
 // Handle other routes by serving the index.html file
-app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static('static'));
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+  res.sendFile(path.join(__dirname, "static/index.html"));
 });
 
 
 // Connect Mongodb
 mongoose
-  .connect(MONGO_URL)
+  .connect('mongodb+srv://madhvesh:madhvesh@devtemp.lz30rdg.mongodb.net/NEWS-API?retryWrites=true&w=majority')
   .then(() => {
     console.log("Connected MONGODB");
-    app.listen(PORT, () => {
-      console.log(`Listening on Port ${PORT}`);
+    app.listen(5000, () => {
+      console.log(`Listening on Port 5000`);
     });
   })
   .catch((err) => {

@@ -12,8 +12,8 @@ const NewsModal = ({ isOpen, isClose, news }) => {
   const auth = useContext(AuthContext)
 
   const sendData = async (book) => {
-    const { title, description, urlToImage } = book;
-    const articleData = { title, description, image: urlToImage };
+    const { title, description, image } = book;
+    const articleData = { title, description, image: image };
     await axios
       .post(api+"/articles/bookmark", articleData, {
         headers: {
@@ -21,6 +21,35 @@ const NewsModal = ({ isOpen, isClose, news }) => {
         },
       })
       .then((response) => {
+<<<<<<< HEAD
+	              console.log(response.status);
+	              if(response.status === 200){
+			                toast.success('🦄 Article Bookmark', {
+						            position: "top-center",
+						            autoClose: 2000,
+						            hideProgressBar: false,
+						            closeOnClick: true,
+						            pauseOnHover: true,
+						            draggable: true,
+						            progress: undefined,
+						            theme: "dark",
+						            });
+			              }
+	            })
+	        .catch((error) => {
+			        console.error(error);
+			        toast.success('🦄 Already Bookmark', {
+					          position: "top-center",
+					          autoClose: 1000,
+					          hideProgressBar: false,
+					          closeOnClick: true,
+					          pauseOnHover: true,
+			                          draggable: true,
+					          progress: undefined,
+					          theme: "dark",
+	  })
+	});
+=======
         console.log(response.status);
         if(response.status === 200){
           toast.success('🦄 Article Bookmark', {
@@ -48,13 +77,14 @@ const NewsModal = ({ isOpen, isClose, news }) => {
           theme: "dark",
           });
       });
+>>>>>>> 4702f325f7e13f10e0bbd9f640322ae0693cf2a1
   };
   return (
     (auth.isSignIn) ?   
     <div className="modal-overlay">
     <div className="modal-content" onClick={(e) => e.stopPropagation()}>
       <div className="modal-image">
-        <img src={news.urlToImage} alt="News" />
+        <img src={news.image} alt="News" />
       </div>
       <div className="modal-news">
         <h2>{news.title}</h2>

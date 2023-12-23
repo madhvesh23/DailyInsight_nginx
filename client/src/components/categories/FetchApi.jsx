@@ -31,8 +31,8 @@ const MainPage = ({ cat }) => {
   // };
 
   const sendData = async (book) => {
-    const { title, description, urlToImage } = book;
-    const articleData = { title, description, image: urlToImage };
+    const { title, description, image } = book;
+    const articleData = { title, description, image:image };
 
     await axios
       .post(api + "/articles/bookmark", articleData, {
@@ -50,11 +50,12 @@ const MainPage = ({ cat }) => {
 
   const ApiFetch = async () => {
     // const apiKey = process.env.REACT_APP_NEWSAPI_KEY;
-    const apiKey = "eeb3f83533614b9da181eb5904c9666c";
+    //const apiKey = "eeb3f83533614b9da181eb5904c9666c";
+    const apiKey="e7de534700ec6f93ba2c69c2c0caf64f";
     console.log(apiKey);
     var url = cat
-      ? `https://newsapi.org/v2/top-headlines?country=us&category=${cat}&apiKey=${apiKey}`
-      : `https://newsapi.org/v2/top-headlines?country=us&category=general&apiKey=${apiKey}`;
+      ? `https://gnews.io/api/v4/top-headlines?category=${cat}&lang=en&country=us&max=10&apikey=${apiKey}`
+      : `https://gnews.io/api/v4/top-headlines?category=general&lang=en&country=us&max=10&apikey=${apiKey}`;
     console.log(url);
     await fetch(url)
       .then(function (response) {
@@ -79,7 +80,7 @@ const MainPage = ({ cat }) => {
               return (
                 <figure key={index} className="snip1216">
                   <div className="image">
-                    <img src={data.urlToImage} alt="sample58" />
+                    <img src={data.image} alt="sample58" />
                   </div>
                   <figcaption>
                     <div className="date">
