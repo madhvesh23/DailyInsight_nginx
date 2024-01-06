@@ -58,7 +58,7 @@ const NewsModal = ({ isOpen, isClose, news }) => {
       </div>
       <div className="modal-news">
         <h2>{news.title}</h2>
-        <p>{news.description}</p>
+        <p>{news.description.length <= 59 ? news.description : `${news.description.slice(0,90)}...read more`}</p>
         <button onClick={() => sendData(news)}>Add to Bookmark</button>
         <ToastContainer/>
       </div>
