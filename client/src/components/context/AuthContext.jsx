@@ -4,7 +4,7 @@ import api from "../Api";
 
 const AuthContext = React.createContext({
   isSignIn: null,
-  bookmarkArr:[],
+  bookmarkArr: [],
   onFetch: () => {},
 });
 
@@ -12,12 +12,15 @@ export const AuthContextProvider = (props) => {
   const [isSignIn, setIsSignIn] = useState();
   const [bookmarkArr, setBookmarkArr] = useState([]);
 
-  const cookieHandler = async() => {
-    const response = await axios.post(api+"/auth/cookieCheck");
-      console.log(response)
-    if (response.data == true) { 
+  // loading spinner
+  const [loading, setLoading] = useState(false);
+
+  const cookieHandler = async () => {
+    const response = await axios.post(api + "/auth/cookieCheck");
+    console.log(response);
+    if (response.data == true) {
       // console.log('not working' )
-      setIsSignIn(1)
+      setIsSignIn(1);
       // console.log(isLoggedIn);
     } else {
       // console.log(isLoggedIn);
@@ -25,30 +28,30 @@ export const AuthContextProvider = (props) => {
     }
     // console.log(isLoggedIn);
   };
-  console.log(isSignIn)
+  console.log(isSignIn);
 
-  const fetchBookmark = async() => {
+  const fetchBookmark = async () => {
     await axios
-      .get(api+"/articles/view")
+      .get(api + "/articles/view")
       .then((list) => setBookmarkArr(list.data))
       .catch((error) => console.log(error));
-
-  }
+  };
   useEffect(() => {
-   cookieHandler()
-   fetchBookmark()
-   console.log("q3")
-  },[]);
+    cookieHandler();
+    fetchBookmark();
+    console.log("q3");
+  }, []);
 
-  console.log(bookmarkArr)
-
+  console.log(bookmarkArr);
 
   return (
     <AuthContext.Provider
       value={{
         isSignIn: isSignIn,
         onFetch: cookieHandler,
-        bookmarkArr : bookmarkArr
+        bookmarkArr: bookmarkArr,
+        loading,
+        setLoading
       }}
     >
       {props.children}
