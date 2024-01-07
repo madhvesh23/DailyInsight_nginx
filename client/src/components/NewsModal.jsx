@@ -97,6 +97,9 @@ const NewsModal = ({ isOpen, isClose, news }) => {
     <div className="main-modal">
       <div className="modal-overlay">
         <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <button className="closebtn" onClick={() => isClose()}>
+            X
+          </button>
           <div className="modal-image">
             <img src={news.image} alt="News" />
           </div>
@@ -104,14 +107,11 @@ const NewsModal = ({ isOpen, isClose, news }) => {
             <h2>{news.title}</h2>
             <p>
               {news.description.length <= 200
-                ? news.description 
+                ? news.description
                 : `${news.description.slice(0, 150)}...read more`}
             </p>
             <button className="bookmark-btn" onClick={() => sendData(news)}>
               {isBookmarked ? "Remove from Bookmark" : "Add to Bookmark"}
-            </button>
-            <button className="closebtn" onClick={() => isClose()}>
-              X
             </button>
           </div>
           <ToastContainer />
@@ -120,7 +120,7 @@ const NewsModal = ({ isOpen, isClose, news }) => {
     </div>
   ) : (
     <div className="modal-overlay">
-      <MainSignIn />
+      <MainSignIn close={isClose}/>
     </div>
   );
 };

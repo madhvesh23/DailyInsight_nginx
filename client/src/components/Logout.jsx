@@ -11,28 +11,37 @@ function Logout() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
-  const Logout = async () => {
+  const logout = async () => {
     toast("Logged out!..Login again!");
     await axios.post(api + "/auth/logout");
     setLoading(true);
-    auth.onFetch();
     setTimeout(() => {
+      auth.onFetch();
       setLoading(false);
-      
     }, 1000);
-    navigate("/home");
+    // navigate("/home");
   };
 
   return (
-    <div className="logout-container">
-      {loading ? (
+    <>
+      <div className="logout-container">
+        
+    {loading ? (
         <Spinner />
-      ) : (
-        <button className="logout" onClick={() => Logout()}>
+      ) : 
+      <>
+        <button
+          className="logout"
+          onClick={() => {
+            logout();
+          }}
+        >
           Logout
         </button>
-      )}
 
+        </>
+      }
+    </div>
       <ToastContainer
         position="top-center"
         autoClose={5000}
@@ -44,8 +53,9 @@ function Logout() {
         draggable
         pauseOnHover
         theme="dark"
-      />
-    </div>
+        />
+    </>
+
   );
 }
 

@@ -52,8 +52,8 @@ const MainPage = ({ cat }) => {
   const ApiFetch = async () => {
     // const apiKey = process.env.REACT_APP_NEWSAPI_KEY;
     // const apiKey = "eeb3f83533614b9da181eb5904c9666c";
-    // const apiKey="e7de534700ec6f93ba2c69c2c0caf64f";
-    const apiKey = "011a4bb168875ebd5c3bc441672271d1";
+    const apiKey="e7de534700ec6f93ba2c69c2c0caf64f";
+    // const apiKey = "011a4bb168875ebd5c3bc441672271d1";
     console.log(apiKey);
     var url = cat
       ? `https://gnews.io/api/v4/top-headlines?category=${cat}&lang=en&country=us&max=10&apikey=${apiKey}`

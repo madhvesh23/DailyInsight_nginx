@@ -52,17 +52,18 @@ export default function MainSignIn({ close }) {
       await axios.post(api + "/auth/login", UserData, {
         withCredentials: "include",
       });
+      auth.onFetch();
       setLoading(true);
       // check token is valid or not
-      auth.onFetch();
-      console.log(auth.isSignIn);
+      close()
+      // console.log(auth.isSignIn);
       setTimeout(() => {
         setLoading(false);
-        window.location.reload();
+        toast("Welcome to DailyInsight!");
+        // window.location.reload();
         navigate("/home");
       }, 650);
 
-      toast("Welcome to DailyInsight!");
     } else {
       alert("Please enter a valid username and password.");
     }
@@ -176,6 +177,7 @@ export default function MainSignIn({ close }) {
                     </div> */}
               </form>
             </div>
+          </div>
             <ToastContainer
               position="top-center"
               autoClose={5000}
@@ -188,7 +190,6 @@ export default function MainSignIn({ close }) {
               pauseOnHover
               theme="dark"
             />
-          </div>
         </>
       )}
     </>
