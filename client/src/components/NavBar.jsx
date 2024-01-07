@@ -7,7 +7,8 @@ import MainSignIn from "./auth/MainSignIn";
 import logo from "../static/logo.png";
 import { FiAlignJustify } from "react-icons/fi";
 import Spinner from "./context/LoadingSpinner";
-import LoadingSpinner from "./context/LoadingSpinner";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const NavBar = () => {
   const auth = useContext(AuthContext);
@@ -15,6 +16,8 @@ const NavBar = () => {
   const [loading, setLoading] = useState(false);
   const [click, setClick] = useState("");
   const [isClicked, setIsClicked] = useState(null);
+
+  
 
   const handleNavItemClick = (item) => {
     setIsClicked(item);
@@ -39,6 +42,8 @@ const NavBar = () => {
   useEffect(() => {
     handleSpinner();
   }, []);
+
+  console.log(loading)
 
   return (
     <>
@@ -167,13 +172,13 @@ const NavBar = () => {
                     </Link>
                   </button>
                   {auth.isSignIn ? (
-                    <Logout />
+                    <Logout setLoad={setLoading} />
                   ) : (
                     <button className="logout" onClick={isOpen}>
                       Login
                     </button>
                   )}
-                  {modal && <MainSignIn close={isClose} />}
+                  {modal && <MainSignIn close={isClose}  />}
                   {auth.isSignIn == true && modal && <MainSignIn />}
                 </div>
               </nav>
@@ -181,6 +186,18 @@ const NavBar = () => {
           </div>
         </>
       )}
+      <ToastContainer
+      position="top-center"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="dark"
+    />
     </>
   );
 };

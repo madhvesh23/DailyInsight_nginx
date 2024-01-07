@@ -19,53 +19,54 @@ export default function MainSignIn({ close }) {
 
   // signup
   const handleSignup = async (e) => {
-    toast("Registered Successfully!");
     e.preventDefault();
-    toast("Registered Successfully!");
-    if (username.trim() !== "" && password.trim() !== "") {
-      const UserData = {
-        username: username,
-        password: password,
-      };
-      // post request for user signup
-      await axios.post(api + "/auth/signup", UserData, {
-        withCredentials: "include",
-      });
-      setLoading(true);
+    try {
+      if (username.trim() !== "" && password.trim() !== "") {
+        const UserData = {
+          username: username,
+          password: password,
+        };
+        // post request for user signup
+        await axios.post(api + "/auth/signup", UserData, {
+          withCredentials: "include",
+        });
+        setLoading(true);
+        setTimeout(() => {
+          setLoading(false);
+          toast("Registered Successfully!");
+        }, 150);
 
-      setTimeout(() => {
-        setLoading(false);
-        window.location.reload();
-        navigate("/home");
-      }, 650);
-    } else {
-      alert("Please enter a valid username and password.");
+        handleLogin(e);
+      } else {
+        alert("Please enter a valid username and password.");
+      }
+    } catch (error) {
+      toast("Please enter a valid username and password.");
     }
   };
 
   //   singin
   const handleLogin = async (e) => {
     e.preventDefault();
-    if (username.trim() !== "" && password.trim() !== "") {
-      const UserData = { username: username, password: password };
-      // post request of user using axios
-      await axios.post(api + "/auth/login", UserData, {
-        withCredentials: "include",
-      });
-      auth.onFetch();
-      setLoading(true);
-      // check token is valid or not
-      close()
-      // console.log(auth.isSignIn);
-      setTimeout(() => {
-        setLoading(false);
-        toast("Welcome to DailyInsight!");
-        // window.location.reload();
-        navigate("/home");
-      }, 650);
-
-    } else {
-      alert("Please enter a valid username and password.");
+    try {
+      if (username.trim() !== "" && password.trim() !== "") {
+        const UserData = { username: username, password: password };
+        await axios.post(api + "/auth/login", UserData, {
+          withCredentials: "include",
+        });
+        setLoading(true);
+        close();
+        setTimeout(() => {
+          auth.onFetch();
+          setLoading(false);
+          toast("Welcome to DailyInsight!");
+          navigate("/home");
+        }, 650);
+      } else {
+        toast("Please enter a valid username and password.");
+      }
+    } catch (error) {
+      toast("Please enter a valid username and password.");
     }
   };
 
@@ -166,7 +167,7 @@ export default function MainSignIn({ close }) {
                     fontSize: 12,
                     color: "#2c3e50",
                     fontFamily: "monospace",
-                    textAlign:'center'
+                    textAlign: "center",
                   }}
                 >
                   Fuel your day with DailyInsight!
@@ -178,18 +179,6 @@ export default function MainSignIn({ close }) {
               </form>
             </div>
           </div>
-            <ToastContainer
-              position="top-center"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="dark"
-            />
         </>
       )}
     </>

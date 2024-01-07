@@ -92,6 +92,7 @@ const Bookmark = () => {
     console.log(Articles);
   }, []);
 
+  console.log(Articles[7])
   return (
     <>
       {!Articles && <LoadingSpinner />}
@@ -117,7 +118,7 @@ const Bookmark = () => {
                           </p>
                         </>
                       ) : (
-                        <img src={data.image} alt="c" />
+                        <img src={data.image} alt="" />
                       )}
                     </div>
                     <figcaption>
