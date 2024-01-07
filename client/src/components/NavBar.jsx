@@ -12,7 +12,7 @@ const NavBar = () => {
   const auth = useContext(AuthContext);
   const [modal, setModal] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [click, setClick] = useState(true);
+  const [click, setClick] = useState("");
 
   const isOpen = (e) => {
     setModal(true);
@@ -42,50 +42,48 @@ const NavBar = () => {
           <nav>
             <div className="logo">
               <div>
-              <img src={logo} alt="" onClick={() => handleSpinner()} />
+                <img src={logo} alt="" onClick={() => handleSpinner()} />
               </div>
               <div>
                 {!click ? (
-                  <button className="coll" onClick={() => setClick(!click)}>
-                    <FiAlignJustify />
+                  <button className="coll" onClick={() => setClick("active")}>
+                    X
                   </button>
                 ) : (
-                  <button className="coll" onClick={() => setClick(!click)}>
-                    X
+                  <button className="coll" onClick={() => setClick("")}>
+                    <FiAlignJustify />
                   </button>
                 )}
               </div>
             </div>
 
-            {click && (
-              <div className="right">
-                <button className="nav-btn" onClick={() => handleSpinner()}>
-                  <Link to="/">Home</Link>
-                </button>
-                <button className="nav-btn" onClick={() => handleSpinner()}>
-                  <Link to="/Health">Health</Link>
-                </button>
-                <button className="nav-btn" onClick={() => handleSpinner()}>
-                  <Link to="/Technology">Technology</Link>
-                </button>
-                <button className="nav-btn" onClick={() => handleSpinner()}>
-                  <Link to="/Business">Business</Link>
-                </button>
-                <button className="nav-btn" onClick={() => handleSpinner()}>
-                  <Link to="/Sports">Sports</Link>
-                </button>
-                <button className="nav-btn" onClick={() => handleSpinner()}>
-                  <Link to="/readingList">Bookmark</Link>
-                </button>
-                {auth.isSignIn ? (
-                  <Logout />
-                ) : (
-                  <button onClick={isOpen}>Login</button>
-                )}
-                {modal && <MainSignIn close={isClose} />}
-                {auth.isSignIn == true && modal && <MainSignIn />}
-              </div>
-            )}
+            <div className={`right ${click}`}>
+              <button className="nav-btn" onClick={() => handleSpinner()}>
+                <Link to="/">Home</Link>
+              </button>
+              <button className="nav-btn" onClick={() => handleSpinner()}>
+                <Link to="/Health">Health</Link>
+              </button>
+              <button className="nav-btn" onClick={() => handleSpinner()}>
+                <Link to="/Technology">Technology</Link>
+              </button>
+              <button className="nav-btn" onClick={() => handleSpinner()}>
+                <Link to="/Business">Business</Link>
+              </button>
+              <button className="nav-btn" onClick={() => handleSpinner()}>
+                <Link to="/Sports">Sports</Link>
+              </button>
+              <button className="nav-btn" onClick={() => handleSpinner()}>
+                <Link to="/readingList">Bookmark</Link>
+              </button>
+              {auth.isSignIn ? (
+                <Logout />
+              ) : (
+                <button onClick={isOpen}>Login</button>
+              )}
+              {modal && <MainSignIn close={isClose} />}
+              {auth.isSignIn == true && modal && <MainSignIn />}
+            </div>
           </nav>
         </header>
       </div>
