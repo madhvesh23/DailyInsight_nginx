@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import FetchApi from "./components/categories/FetchApi";
+import MainSignIn from "./components/auth/MainSignIn";
 import Login from "./components/auth/Login";
-import Signup from "./components/auth/signup";
 import Bookmark from "./components/Bookmark";
 import AuthContext from "./components/context/AuthContext";
 
@@ -24,7 +24,7 @@ function App() {
         <Route path="/health" element={<FetchApi cat="health" />} />
         <Route path="/readingList" element={(auth.isSignIn) ? <Bookmark /> : <Login />} />
         {/* <Route path="/login" element={<Login />} /> */}
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/signup" element={<MainSignIn />} />
       </Routes>
     </BrowserRouter>
   );

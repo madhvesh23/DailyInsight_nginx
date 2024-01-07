@@ -59,8 +59,22 @@ import Layout from "../Layout/layout";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import api from "./Api";
+import NewsModal from "./NewsModal";
+import LoadingSpinner from "./context/LoadingSpinner";
 const Bookmark = () => {
   const [Articles, setArticles] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedNews, setSelectedNews] = useState(null);
+
+  const openModal = (data) => {
+    setSelectedNews(data);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedNews(null);
+    setModalOpen(false);
+  };
   const bookmarkShow = () => {
     axios
       .get(api + "/articles/view", {
@@ -79,24 +93,67 @@ const Bookmark = () => {
   }, []);
 
   return (
-    <div className="container">
-      <Layout>
-        <div className="news-section">
-          {Articles.map((data, index) => {
-            return (
-              <div key={index} className="news-card">
-                <img src={data.image} alt="News 1" />
-                <div className="news-card-content">
-                  <h3>{data.title}</h3>
-                  <p>{data.description}</p>
-                  
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </Layout>
-    </div>
+    <>
+      {!Articles && <LoadingSpinner />}
+      <div className="container">
+        <Layout>
+          <div className="news-section">
+            {Articles.map((data, index) => {
+              return (
+                <>
+                  <figure key={index} className="snip1216">
+                    <div className="image">
+                      {!data.image ? (
+                        <>
+                          <div className="spinner"></div>
+                          <p
+                            style={{
+                              textAlign: "center",
+                              color: "#ffffff8c",
+                              fontSize: 11,
+                            }}
+                          >
+                            loading..
+                          </p>
+                        </>
+                      ) : (
+                        <img src={data.image} alt="c" />
+                      )}
+                    </div>
+                    <figcaption>
+                      {/* <div className="date">
+                      <span className="day">
+                        {data.publishedAt.split("-")[0]}
+                      </span>
+                      <span className="month">
+                        {data.publishedAt.split("-")[1]}
+                      </span>
+                    </div> */}
+                      <h3>{data.title}</h3>
+                    </figcaption>
+                    <footer>
+                      <button
+                        className="open-button"
+                        onClick={() => openModal(data)}
+                      >
+                        Read more
+                      </button>
+                    </footer>
+                  </figure>
+                </>
+              );
+            })}
+            {modalOpen && (
+              <NewsModal
+                isOpen={openModal}
+                isClose={closeModal}
+                news={selectedNews}
+              />
+            )}
+          </div>
+        </Layout>
+      </div>
+    </>
   );
 };
 

@@ -32,7 +32,6 @@ function ReadingList() {
             );
           }))}
         </div>
-       
       </Layout>
    
     </div>

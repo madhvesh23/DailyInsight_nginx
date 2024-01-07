@@ -5,6 +5,7 @@ import axios from "axios";
 import AuthContext from "../context/AuthContext";
 import NewsModal from "../NewsModal";
 import api from "../Api";
+import LoadingSpinner from "../context/LoadingSpinner";
 
 const MainPage = ({ cat }) => {
   const auth = useContext(AuthContext);
@@ -32,7 +33,7 @@ const MainPage = ({ cat }) => {
 
   const sendData = async (book) => {
     const { title, description, image } = book;
-    const articleData = { title, description, image:image };
+    const articleData = { title, description, image: image };
 
     await axios
       .post(api + "/articles/bookmark", articleData, {
@@ -105,8 +106,9 @@ const MainPage = ({ cat }) => {
                 </figure>
               );
             })
-          ) : (
-            <h1>NEWS API IS NOT PROPER.</h1>
+          ) : (<>
+            <LoadingSpinner/>
+          </>
           )}
 
           {modalOpen && (

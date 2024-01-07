@@ -15,18 +15,24 @@ function Logout() {
     toast("Logged out!..Login again!");
     await axios.post(api + "/auth/logout");
     setLoading(true);
-    // auth check
     auth.onFetch();
     setTimeout(() => {
       setLoading(false);
+      
     }, 1000);
     navigate("/home");
   };
 
   return (
-    <div>
-      {loading && <Spinner />}
-      <button onClick={() => Logout()}>Logout</button>
+    <div className="logout-container">
+      {loading ? (
+        <Spinner />
+      ) : (
+        <button className="logout" onClick={() => Logout()}>
+          Logout
+        </button>
+      )}
+
       <ToastContainer
         position="top-center"
         autoClose={5000}

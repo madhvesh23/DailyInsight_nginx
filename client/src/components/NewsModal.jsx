@@ -7,9 +7,12 @@ import api from "./Api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./NewsModal.css";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const NewsModal = ({ isOpen, isClose, news }) => {
   const auth = useContext(AuthContext);
+  const navigate = useNavigate();
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   useEffect(() => {
@@ -22,7 +25,7 @@ const NewsModal = ({ isOpen, isClose, news }) => {
   const sendData = async (book) => {
     const { title, description, image } = book;
     const articleData = { title, description, image: image };
-    
+
     // If the news is already bookmarked, remove it
     if (isBookmarked) {
       await axios
@@ -100,19 +103,19 @@ const NewsModal = ({ isOpen, isClose, news }) => {
           <div className="modal-news">
             <h2>{news.title}</h2>
             <p>
-              {news.description.length <= 59
-                ? news.description
-                : `${news.description.slice(0, 90)}...read more`}
+              {news.description.length <= 200
+                ? news.description 
+                : `${news.description.slice(0, 150)}...read more`}
             </p>
-            <button onClick={() => sendData(news)}>
+            <button className="bookmark-btn" onClick={() => sendData(news)}>
               {isBookmarked ? "Remove from Bookmark" : "Add to Bookmark"}
             </button>
-            <ToastContainer />
+            <button className="closebtn" onClick={() => isClose()}>
+              X
+            </button>
           </div>
+          <ToastContainer />
         </div>
-        <button className="closebtn" onClick={() => isClose()}>
-          X
-        </button>
       </div>
     </div>
   ) : (
